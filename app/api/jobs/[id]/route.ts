@@ -4,16 +4,21 @@ import Job from "@/models/Job";
 import mongoose from "mongoose";
 import { auth } from "@clerk/nextjs/server";
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+type RouteContext = {
+  params: Promise<{ id: string }>;
+};
+
+export async function GET(req: Request, { params }: RouteContext) {
   try {
     const { userId } = await auth();
     if (!userId) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 
     await connectToDatabase();
-    const id = params.id?.trim();
-    if (!mongoose.Types.ObjectId.isValid(id)) return NextResponse.json({ message: "Invalid ID" }, { status: 400 });
+    const { id } = await params;
+    const trimmedId = id?.trim();
+    if (!mongoose.Types.ObjectId.isValid(trimmedId)) return NextResponse.json({ message: "Invalid ID" }, { status: 400 });
 
-    const job = await Job.findOne({ _id: id, userId }).lean();
+    const job = await Job.findOne({ _id: trimmedId, userId }).lean();
     if (!job) return NextResponse.json({ message: "Job not found" }, { status: 404 });
 
     return NextResponse.json({ ...job, _id: (job._id as any).toString() });
@@ -22,16 +27,17 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: RouteContext) {
   try {
     const { userId } = await auth();
     if (!userId) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 
     await connectToDatabase();
     const body = await req.json();
-    const id = params.id?.trim();
+    const { id } = await params;
+    const trimmedId = id?.trim();
 
-    const updated = await Job.findOneAndUpdate({ _id: id, userId }, body, { new: true });
+    const updated = await Job.findOneAndUpdate({ _id: trimmedId, userId }, body, { new: true });
     if (!updated) return NextResponse.json({ message: "Job not found or unauthorized" }, { status: 404 });
 
     return NextResponse.json({ ...updated.toObject(), _id: updated._id.toString() });
@@ -40,16 +46,17 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: RouteContext) {
   try {
     const { userId } = await auth();
     if (!userId) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 
     await connectToDatabase();
-    const id = params.id?.trim();
-    if (!mongoose.Types.ObjectId.isValid(id)) return NextResponse.json({ message: "Invalid ID" }, { status: 400 });
+    const { id } = await params;
+    const trimmedId = id?.trim();
+    if (!mongoose.Types.ObjectId.isValid(trimmedId)) return NextResponse.json({ message: "Invalid ID" }, { status: 400 });
 
-    const deleted = await Job.findOneAndDelete({ _id: id, userId });
+    const deleted = await Job.findOneAndDelete({ _id: trimmedId, userId });
     if (!deleted) return NextResponse.json({ message: "Job not found or unauthorized" }, { status: 404 });
 
     return NextResponse.json({ message: "Job deleted successfully" }, { status: 200 });

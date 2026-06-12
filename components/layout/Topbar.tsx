@@ -28,7 +28,7 @@ export default function Topbar() {
           <span className="text-base leading-none">+</span>
           <span className="hidden sm:inline">Add Job</span>
         </Link>
-        <UserButton afterSignOutUrl="/" />
+        <UserButton />
       </div>
     </header>
   );

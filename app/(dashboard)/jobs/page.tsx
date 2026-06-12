@@ -89,14 +89,14 @@ export default function JobsPage() {
           placeholder="Search by company or role..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 px-4 py-2.5 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300"
+          className="flex-1 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300"
         />
         <div className="flex flex-wrap gap-2">
           {STATUSES.map((s) => (
             <button
               key={s}
               onClick={() => setFilter(s)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-300 ${
                 filter === s
                   ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-transparent shadow-md"
                   : "bg-white dark:bg-white/[0.03] border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-slate-400 hover:border-violet-500/30 hover:text-violet-600 dark:hover:text-violet-400"
@@ -116,7 +116,7 @@ export default function JobsPage() {
         </div>
       ) : filtered.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-24 text-center">
-          <div className="text-5xl mb-4">🔍</div>
+          <div className="text-4xl mb-4">🔍</div>
           <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
             {jobs.length === 0 ? "No jobs tracked yet" : "No jobs match your filter"}
           </h3>
@@ -139,18 +139,18 @@ export default function JobsPage() {
           {filtered.map((job) => (
             <div
               key={job._id}
-              className="group bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] hover:border-violet-500/30 rounded-2xl p-5 transition-all duration-300 hover:shadow-lg hover:shadow-violet-900/10"
+              className="group bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] hover:border-violet-500/30 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-violet-900/10"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 flex-wrap mb-1">
-                    <h2 className="font-bold text-gray-900 dark:text-white text-base group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">
+                    <h2 className="font-semibold text-gray-900 dark:text-white text-sm group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">
                       {job.role}
                     </h2>
                     <StatusBadge status={job.status} />
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-slate-400 font-medium">{job.company}</p>
-                  <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-gray-400 dark:text-slate-600">
+                  <p className="text-xs text-gray-500 dark:text-slate-400 font-medium">{job.company}</p>
+                  <div className="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-gray-400 dark:text-slate-600">
                     {job.location && <span>📍 {job.location}</span>}
                     {job.salary && <span>💰 {job.salary}</span>}
                     <span>📅 {new Date(job.appliedDate).toLocaleDateString()}</span>
@@ -172,14 +172,14 @@ export default function JobsPage() {
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <button
                     onClick={() => router.push(`/job/${job._id}`)}
-                    className="px-3 py-1.5 bg-indigo-50 dark:bg-violet-600/10 hover:bg-indigo-100 dark:hover:bg-violet-600/20 border border-indigo-200 dark:border-violet-500/20 text-indigo-600 dark:text-violet-400 rounded-lg text-xs font-semibold transition-all duration-300"
+                    className="px-2.5 py-1 bg-indigo-50 dark:bg-violet-600/10 hover:bg-indigo-100 dark:hover:bg-violet-600/20 border border-indigo-200 dark:border-violet-500/20 text-indigo-600 dark:text-violet-400 rounded-md text-xs font-semibold transition-all duration-300"
                   >
                     View
                   </button>
                   <button
                     onClick={() => handleDelete(job._id)}
                     disabled={deletingId === job._id}
-                    className="px-3 py-1.5 bg-rose-50 dark:bg-rose-600/10 hover:bg-rose-100 dark:hover:bg-rose-600/20 border border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-lg text-xs font-semibold transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="px-2.5 py-1 bg-rose-50 dark:bg-rose-600/10 hover:bg-rose-100 dark:hover:bg-rose-600/20 border border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-md text-xs font-semibold transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {deletingId === job._id ? "..." : "Delete"}
                   </button>

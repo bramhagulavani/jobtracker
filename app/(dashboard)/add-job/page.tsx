@@ -11,14 +11,14 @@ const FormInput = ({
   label: string; placeholder: string; value: string;
   onChange: (v: string) => void; type?: string; required?: boolean;
 }) => (
-  <div className="flex flex-col gap-1.5">
-    <label className="text-xs font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-slate-500 flex items-center gap-1">
+  <div className="flex flex-col gap-1">
+    <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500 flex items-center gap-1">
       {label} {required && <span className="text-rose-400">*</span>}
     </label>
     <input
       type={type} placeholder={placeholder} value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300"
+      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300"
     />
   </div>
 );
@@ -87,7 +87,7 @@ export default function AddJobPage() {
       </div>
 
       {/* Form */}
-      <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 md:p-8 space-y-5">
+      <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-5 md:p-6 space-y-4">
 
         {/* Required Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -96,8 +96,8 @@ export default function AddJobPage() {
         </div>
 
         {/* Status */}
-        <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-slate-500">
+        <div className="flex flex-col gap-1">
+          <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">
             Status
           </label>
           <div className="flex flex-wrap gap-2">
@@ -119,15 +119,15 @@ export default function AddJobPage() {
 
         {/* Optional Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-slate-500">
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">
               Applied Date
             </label>
             <input
               type="date"
               value={appliedDate}
               onChange={(e) => setAppliedDate(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300"
+              className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300"
             />
           </div>
           <FormInput label="Location" placeholder="e.g. Mumbai / Remote" value={location} onChange={setLocation} />
@@ -141,16 +141,16 @@ export default function AddJobPage() {
         <FormInput label="Job URL" placeholder="https://linkedin.com/jobs/..." value={jobUrl} onChange={setJobUrl} type="url" />
 
         {/* Notes */}
-        <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-bold tracking-[0.1em] uppercase text-gray-400 dark:text-slate-500">
+        <div className="flex flex-col gap-1">
+          <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">
             Notes
           </label>
           <textarea
             placeholder="Any notes about this application... interview rounds, contacts, etc."
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            rows={4}
-            className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300 resize-none"
+            rows={3}
+            className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300 resize-none"
           />
         </div>
 

@@ -112,7 +112,7 @@ export default function JobDetailPage() {
 
   if (!job) return null;
 
-  const inputClass = "w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300";
+  const inputClass = "w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-600 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all duration-300";
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -133,29 +133,29 @@ export default function JobDetailPage() {
         {!editing && <StatusBadge status={job.status} />}
       </div>
 
-      <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 md:p-8">
+      <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-5 md:p-6">
         {editing ? (
           /* Edit Form */
-          <div className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Company *</label>
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Company *</label>
                 <input className={inputClass} value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Company name" />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Role *</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Role *</label>
                 <input className={inputClass} value={role} onChange={(e) => setRole(e.target.value)} placeholder="Job title" />
               </div>
             </div>
 
             {/* Status */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Status</label>
+            <div className="flex flex-col gap-1">
+              <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Status</label>
               <div className="flex flex-wrap gap-2">
                 {STATUSES.map((s) => (
                   <button
                     key={s} onClick={() => setStatus(s)}
-                    className={`px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-300 ${
                       status === s
                         ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-transparent shadow-md"
                         : "bg-gray-50 dark:bg-white/[0.03] border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-slate-400"
@@ -167,37 +167,37 @@ export default function JobDetailPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Applied Date</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Applied Date</label>
                 <input type="date" className={inputClass} value={appliedDate} onChange={(e) => setAppliedDate(e.target.value)} />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Location</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Location</label>
                 <input className={inputClass} value={location} onChange={(e) => setLocation(e.target.value)} placeholder="e.g. Mumbai / Remote" />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Salary</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Salary</label>
                 <input className={inputClass} value={salary} onChange={(e) => setSalary(e.target.value)} placeholder="e.g. ₹8 LPA" />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Resume Used</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Resume Used</label>
                 <input className={inputClass} value={resumeUsed} onChange={(e) => setResumeUsed(e.target.value)} placeholder="e.g. ResumeCraft - Classic" />
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Job URL</label>
+            <div className="flex flex-col gap-1">
+              <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Job URL</label>
               <input type="url" className={inputClass} value={jobUrl} onChange={(e) => setJobUrl(e.target.value)} placeholder="https://..." />
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Notes</label>
+            <div className="flex flex-col gap-1">
+              <label className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Notes</label>
               <textarea
-                className={`${inputClass} resize-none`} rows={4}
+                className={`${inputClass} resize-none`} rows={3}
                 value={notes} onChange={(e) => setNotes(e.target.value)}
                 placeholder="Interview rounds, contacts, feedback..."
               />
@@ -220,7 +220,7 @@ export default function JobDetailPage() {
           </div>
         ) : (
           /* View Mode */
-          <div className="space-y-5">
+          <div className="space-y-4">
             {[
               { label: "Company", value: job.company },
               { label: "Role", value: job.role },
@@ -229,15 +229,15 @@ export default function JobDetailPage() {
               { label: "Applied Date", value: job.appliedDate ? new Date(job.appliedDate).toLocaleDateString() : "—" },
               { label: "Resume Used", value: job.resumeUsed || "—" },
             ].map((field, i) => (
-              <div key={i} className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">{field.label}</span>
+              <div key={i} className="flex flex-col gap-0.5">
+                <span className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">{field.label}</span>
                 <span className="text-sm text-gray-900 dark:text-white font-medium">{field.value}</span>
               </div>
             ))}
 
             {job.jobUrl && (
-              <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Job URL</span>
+              <div className="flex flex-col gap-0.5">
+                <span className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Job URL</span>
                 <a href={job.jobUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-violet-500 hover:text-violet-400 transition-colors break-all">
                   {job.jobUrl}
                 </a>
@@ -245,23 +245,23 @@ export default function JobDetailPage() {
             )}
 
             {job.notes && (
-              <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500">Notes</span>
+              <div className="flex flex-col gap-0.5">
+                <span className="text-[11px] font-semibold uppercase text-gray-500 dark:text-slate-500">Notes</span>
                 <p className="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap">{job.notes}</p>
               </div>
             )}
 
             {/* Actions */}
-            <div className="flex gap-3 pt-4 border-t border-gray-100 dark:border-white/[0.06]">
+            <div className="flex gap-3 pt-3 border-t border-gray-100 dark:border-white/[0.06]">
               <button
                 onClick={() => setEditing(true)}
-                className="flex-1 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-xl font-semibold text-sm transition-all duration-300"
+                className="flex-1 py-2.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-lg font-semibold text-sm transition-all duration-300"
               >
                 ✏️ Edit Job
               </button>
               <button
                 onClick={handleDelete} disabled={deleting}
-                className="px-6 py-3 bg-rose-50 dark:bg-rose-600/10 hover:bg-rose-100 dark:hover:bg-rose-600/20 border border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-xl text-sm font-semibold transition-all duration-300 disabled:opacity-40"
+                className="px-4 py-2.5 bg-rose-50 dark:bg-rose-600/10 hover:bg-rose-100 dark:hover:bg-rose-600/20 border border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-lg text-sm font-semibold transition-all duration-300 disabled:opacity-40"
               >
                 {deleting ? "..." : "🗑 Delete"}
               </button>

@@ -105,26 +105,26 @@ export default function DashboardPage() {
               { label: "Offers", value: countByStatus("Offer"), icon: "🎉", color: "text-emerald-500" },
               { label: "Interview Rate", value: `${interviewRate}%`, icon: "📈", color: "text-amber-500" },
             ].map((stat, i) => (
-              <div key={i} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-5 transition-colors duration-300">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-2xl">{stat.icon}</span>
-                  <span className={`text-2xl font-extrabold ${stat.color}`}>{stat.value}</span>
+              <div key={i} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-4 transition-colors duration-300">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">{stat.icon}</span>
+                  <span className={`text-xl font-extrabold ${stat.color}`}>{stat.value}</span>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-slate-500 font-medium">{stat.label}</p>
+                <p className="text-[11px] text-gray-500 dark:text-slate-500 font-semibold">{stat.label}</p>
               </div>
             ))}
           </div>
 
           {/* Pipeline */}
-          <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 mb-8">
-            <h2 className="text-sm font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+          <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-5 mb-5">
+            <h2 className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2 uppercase mb-3">
               <span>📊</span> Application Pipeline
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
               {STATUSES.map((status) => (
-                <div key={status} className="flex flex-col items-center gap-2 p-3 bg-gray-50 dark:bg-white/[0.02] rounded-xl border border-gray-100 dark:border-white/[0.04]">
-                  <span className="text-xl">{STATUS_ICONS[status]}</span>
-                  <span className="text-2xl font-extrabold text-gray-900 dark:text-white">{countByStatus(status)}</span>
+                <div key={status} className="flex flex-col items-center gap-1.5 p-2.5 bg-gray-50 dark:bg-white/[0.02] rounded-lg border border-gray-100 dark:border-white/[0.04]">
+                  <span className="text-lg">{STATUS_ICONS[status]}</span>
+                  <span className="text-lg font-extrabold text-gray-900 dark:text-white">{countByStatus(status)}</span>
                   <StatusBadge status={status} />
                 </div>
               ))}
@@ -132,36 +132,36 @@ export default function DashboardPage() {
           </div>
 
           {/* Recent Jobs */}
-          <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6">
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-5">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2 uppercase">
                 <span>🕐</span> Recent Applications
               </h2>
               <button
                 onClick={() => router.push("/jobs")}
-                className="text-xs text-violet-500 hover:text-violet-400 font-medium transition-colors"
+                className="text-xs text-violet-500 hover:text-violet-400 font-semibold transition-colors"
               >
                 View All →
               </button>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {recentJobs.map((job) => (
                 <div
                   key={job._id}
                   onClick={() => router.push(`/job/${job._id}`)}
-                  className="flex items-center justify-between p-4 bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.04] rounded-xl hover:border-violet-500/30 cursor-pointer transition-all duration-300 group"
+                  className="flex items-center justify-between p-3 bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.04] rounded-lg hover:border-violet-500/30 cursor-pointer transition-all duration-300 group"
                 >
                   <div className="min-w-0">
-                    <p className="font-semibold text-sm text-gray-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">
+                    <p className="font-semibold text-xs text-gray-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">
                       {job.role}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-slate-500 mt-0.5 truncate">
+                    <p className="text-[11px] text-gray-500 dark:text-slate-500 mt-0.5 truncate">
                       {job.company} {job.location ? `· ${job.location}` : ""}
                     </p>
                   </div>
                   <div className="flex items-center gap-3 flex-shrink-0 ml-3">
                     <StatusBadge status={job.status} />
-                    <p className="text-xs text-gray-400 dark:text-slate-600 hidden sm:block">
+                    <p className="text-[11px] text-gray-400 dark:text-slate-600 hidden sm:block">
                       {new Date(job.appliedDate).toLocaleDateString()}
                     </p>
                   </div>
