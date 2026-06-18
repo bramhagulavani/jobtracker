@@ -18,7 +18,11 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+export default function ThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
